@@ -30,4 +30,3 @@ while True:
         break
     else:
         wiktionaryLookup(word)
-        print("\n")
