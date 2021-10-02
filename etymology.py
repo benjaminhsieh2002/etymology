@@ -9,7 +9,7 @@ def wiktionaryLookup(word):
         print("An error occured.")
         return 0
     data = data.decode("utf-8","replace")
-    pos = data.find("<span class=\"mw-headline\" id=\"Etymology\">")
+    pos = data.find("<span class=\"mw-headline\" id=\"Etymology")
     etym = data[data.find("<p>", pos)+3:data.find("<h3>", pos)]
     while(etym.find("mention\" lang=")!=-1):
         code = etym[etym.find("lang=", etym.find("mention\" lang="))+6:etym.find(">", etym.find("mention\" lang="))-1]
