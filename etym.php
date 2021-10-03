@@ -2,14 +2,12 @@
 function wiktionary_lookup($word){
     $data = get_data('https://en.wiktionary.org/wiki/'.$word);
     $pos = strpos($data, "<span class=\"mw-headline\" id=\"Etymology");
-    $etym = substr($data, strpos($data, "<p>", $pos)+3, strpos($data, "<h3>", $pos)-strpos($data, "<p>", $pos)-3);
+    $etym = substr($data, strpos($data, "<p>", $pos) + 3, strpos($data, "<h3>", $pos) - strpos($data, "<p>", $pos) - 3);
     while(strpos($etym, "mention\" lang=")){
-       // code = etym[etym.find("lang=", etym.find("mention\" lang="))+6:etym.find(">", etym.find("mention\" lang="))-1]
-        $code = substr($etym, strpos($etym, "lang=", strpos($etym, "mention\" lang="))+6, strpos($etym, ">", strpos($etym, "mention\" lang="))-strpos($etym, "lang=", strpos($etym, "mention\" lang="))-7);
-        //etym = etym[etym.find("mention\" lang=")+1:]
+        $code = substr($etym, strpos($etym, "lang=", strpos($etym, "mention\" lang=")) + 6, strpos($etym, ">", strpos($etym, "mention\" lang=")) - strpos($etym, "lang=", strpos($etym, "mention\" lang=")) - 7);
         echo $code;
         echo "<br>";
-        $etym = substr($etym, strpos($etym, "mention\" lang=")+1);
+        $etym = substr($etym, strpos($etym, "mention\" lang=") + 1);
     }
 }
 
